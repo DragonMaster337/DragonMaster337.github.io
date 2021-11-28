@@ -67,7 +67,7 @@ var markers = data.split("\n");
           var emoji = me_data;
           var pos = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
           var marker = new google.maps.Marker({
-                position: position,
+                position: pos,
                 map: zombie_map,
                 icon: emoji
                });
