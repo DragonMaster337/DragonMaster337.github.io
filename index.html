@@ -29,6 +29,8 @@
 -26.17156216478326 27.944764130788815 weapons.png`;
 var markers = data.split("\n");
 
+  var me_data = "upsidedown.png";
+
     function initMap() {
 
               zombie_map = new google.maps.Map(document.getElementById('zombie_map'), {
@@ -61,12 +63,12 @@ var markers = data.split("\n");
       }
 
       function set_my_position(position) {
-          var emoji = marker_data[2];
+          var emoji = me_data;
           var pos = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
           var marker = new google.maps.Marker({
                 position: position,
                 map: zombie_map,
-                icon: me
+                icon: emoji
                });
       } 
   </script>
