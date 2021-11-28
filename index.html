@@ -18,7 +18,8 @@
 <div id="zombie_map"></div>
 
   <script>
-    var zombie_map
+    var zombie_map;
+    var old_position;
     var all_markers = [];
     var data = `-26.15553859462306 27.996262543874753 zombie.png
 -26.18511885046172 28.151444428640378 hospital.png
@@ -32,6 +33,11 @@ var markers = data.split("\n");
   var me_data = "upsidedown.png";
 
     function initMap() {
+
+              var marker = new google.maps.Marker({
+                position: old_position,
+                map: zombie_map
+               });
 
               zombie_map = new google.maps.Map(document.getElementById('zombie_map'), {
               zoom: 30,
