@@ -1,50 +1,33 @@
+<!DOCTYPE html>
 <html>
-  <head>
-    <style>
-    #zombie_map {
-        width: 600px;
-        height: 400px;
-        background-color: grey;
-    }
-    </style>
-    <title>Zombie Map</title>
-  </head>
-  <body>
-    My zombie map
-    <div id="zombie_map"></div>
-    <form>
-      <select id="icon_to_use">
-        <option value="zombie.png">Zombie</option>
-        <option value="hospital.png">Hospital</option>    
-        <option value="weapons.png">Weapons</option>    
-      </select>
-    </form>
-    <script>
-       var zombie_map;
-       var data = ``
-       function place_marker(location) {
-          var emoji = document.getElementById('icon_to_use').value;
-          var marker = new google.maps.Marker({
-            position: location,
-            map: zombie_map,
-            icon: emoji
-        });
-          console.log(location.lat() + " " + location.lng() + " " + emoji);
-       }
-        function initMap() {
+<head>
+  <style>
+#zombie_map {
+    height: 100%;
+    width: 100%;
+    left: 0;
+    position: absolute;
+    top: 0;
+    background-color: grey;
+}
+</style>
+  <title>My Zombie Page</title>
+</head>
+<body>
+  My zombie map
+<div id="zombie_map"></div>
 
-                zombie_map = new google.maps.Map(document.getElementById('zombie_map'), {
-                zoom: 10,
-                center: {lat: -26.145676842005955, lng: 27.908371918874753}
+  <script>
+    var zombie_map
+    function initMap() {
 
-           });
-            zombie_map.addListener('click', function(e) {
-            var location = e.latLng;
-            place_marker(location);
-        });
+              zombie_map = new google.maps.Map(document.getElementById('zombie_map'), {
+              zoom: 10,
+              center: {lat: -26.145676842005955, lng: 27.908371918874753}
+          });
       }
-    </script>
-    Items I want to appear on my page will go here
-    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD2r2k0VgvRbR4HVy0JiLlUT2ZwgMVrGCU&callback=initMap"> </script>
-  </body>
+  </script>
+
+  <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD2r2k0VgvRbR4HVy0JiLlUT2ZwgMVrGCU&callback=initMap"> </script>  
+</body>
 </html>
