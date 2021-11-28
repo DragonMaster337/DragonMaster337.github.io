@@ -63,6 +63,7 @@ var markers = data.split("\n");
       }
 
       function set_my_position(position) {
+        console.log("yeet");
           var emoji = me_data;
           var pos = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
           var marker = new google.maps.Marker({
