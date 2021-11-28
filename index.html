@@ -19,15 +19,60 @@
 
   <script>
     var zombie_map
+    var all_markers = [];
+    var data = `-26.15553859462306 27.996262543874753 zombie.png
+-26.18511885046172 28.151444428640378 hospital.png
+-26.13581425608951 27.898758881765378 hospital.png
+-26.239945704660308 28.00656222649194 weapons.png
+-26.110537577663212 28.099259370046628 weapons.png
+-26.08340530506897 27.990769379812253 weapons.png
+-26.17156216478326 27.944764130788815 weapons.png`;
+var markers = data.split("\n");
+
     function initMap() {
 
               zombie_map = new google.maps.Map(document.getElementById('zombie_map'), {
-              zoom: 10,
+              zoom: 30,
               center: {lat: -26.145676842005955, lng: 27.908371918874753}
           });
+
+              if(navigator.geolocation) {
+                navigator.geolocation.watchPosition(set_my_position);
+              }
+              else {
+              alert("Geolocation doesn't work in your browser");
+              }
+
+
+              for(var i=0; i < markers.length; i++){
+               var marker_data = markers[i].trim();
+               marker_data = marker_data.split(" ");
+               var latitude = marker_data[0];
+               var longitude = marker_data[1];
+               var emoji = marker_data[2];
+               var marker_position = new google.maps.LatLng(latitude, longitude);
+               var marker = new google.maps.Marker({
+                position: marker_position,
+                map: zombie_map,
+                icon: emoji
+               });
+               all_markers.push(marker);
+            }
       }
+
+      function set_my_position(position) {
+          var pos = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+          var marker = new google.maps.Marker({
+                position: position,
+                map: zombie_map,
+                icon: emoji
+               });
+      } 
   </script>
 
   <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD2r2k0VgvRbR4HVy0JiLlUT2ZwgMVrGCU&callback=initMap"> </script>  
 </body>
 </html>
+
+
+
