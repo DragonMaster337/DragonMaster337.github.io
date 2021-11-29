@@ -34,11 +34,6 @@ var markers = data.split("\n");
 
     function initMap() {
 
-              var marker = new google.maps.Marker({
-                position: old_position,
-                map: zombie_map
-               });
-
               zombie_map = new google.maps.Map(document.getElementById('zombie_map'), {
               zoom: 30,
               center: {lat: -26.145676842005955, lng: 27.908371918874753}
